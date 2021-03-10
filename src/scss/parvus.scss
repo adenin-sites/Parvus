@@ -2,7 +2,7 @@
   --transition-duration: 300ms;
   --transition-timing-function: cubic-bezier(0.2, 0, 0.2, 1);
 
-  --overlay-color: hsl(23, 40%, 96%);
+  --overlay-color: rgba(204, 204, 204, 80%);
   --overlay-text: hsl(228, 24%, 23%);
 
   --button-color: hsl(228, 24%, 23%);
@@ -12,7 +12,7 @@
   --focus-color: hsl(51, 100%, 85%);
   --focus-outline-color: hsl(228, 24%, 23%);
 
-  --loader-background-color: hsl(23, 40%, 96%);
+  --loader-background-color: rgba(204, 204, 204, 80%);
   --loader-color: hsl(228, 24%, 23%);
 
   --image-max-height: 85vh;
@@ -27,7 +27,7 @@
 .parvus-zoom {
   display: block;
   position: relative;
-
+  cursor: zoom-in;
 
   &__indicator {
     align-items: center;
@@ -111,6 +111,11 @@
       max-width: var(--image-max-width);
       transform-origin: left top;
       width: auto;
+      box-shadow: 0 1px 1px 1px rgba(0,0,0,0.10), 
+                  0 2px 2px 1px rgba(0,0,0,0.10), 
+                  0 4px 4px 1px rgba(0,0,0,0.10), 
+                  0 6px 8px 1px rgba(0,0,0,0.10);
+      background: #FFF;
     }
   }
 

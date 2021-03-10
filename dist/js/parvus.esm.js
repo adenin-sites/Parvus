@@ -111,11 +111,11 @@ function Parvus(userOptions) {
 
   const add = function add(el) {
     if (!el.classList.contains('parvus-zoom')) {
-      el.classList.add('parvus-zoom');
-      const lightboxIndicatorIcon = document.createElement('div');
-      lightboxIndicatorIcon.className = 'parvus-zoom__indicator';
-      lightboxIndicatorIcon.innerHTML = config.lightboxIndicatorIcon;
-      el.appendChild(lightboxIndicatorIcon); // Bind click event handler
+      el.classList.add('parvus-zoom'); //const lightboxIndicatorIcon = document.createElement('div')
+      //lightboxIndicatorIcon.className = 'parvus-zoom__indicator'
+      //lightboxIndicatorIcon.innerHTML = config.lightboxIndicatorIcon
+      //el.parentNode.appendChild(lightboxIndicatorIcon)
+      // Bind click event handler
 
       el.addEventListener('click', triggerParvus);
     }
@@ -266,7 +266,7 @@ function Parvus(userOptions) {
 
 
   const load = function load(el) {
-    if (!el.href.match(/\.(png|jpe?g|gif|bmp|webp|svg)(\?.*)?$/i)) {
+    if (el.href && !el.href.match(/\.(png|jpe?g|gif|bmp|webp|svg)(\?.*)?$/i) || !el.src.match(/\.(png|jpe?g|gif|bmp|webp|svg)(\?.*)?$/i)) {
       return;
     } // Create loading indicator
 
@@ -278,10 +278,10 @@ function Parvus(userOptions) {
 
     lightbox.appendChild(loadingIndicator);
     lightboxImage = document.createElement('img');
-    const THUMBNAIL = el.querySelector('img');
+    const THUMBNAIL = el;
     const THUMBNAIL_SIZE = el.getBoundingClientRect();
     lightboxImage.alt = THUMBNAIL.alt || '';
-    lightboxImage.src = el.href;
+    lightboxImage.src = el.href ? el.href : el.src;
     lightboxImageContainer.style.opacity = '0';
     lightboxImage.style.opacity = '0';
     lightboxImageContainer.appendChild(lightboxImage);

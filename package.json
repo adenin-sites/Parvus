@@ -12,6 +12,7 @@
     "@rollup/plugin-node-resolve": "^11.2.0",
     "core-js": "^3.9.0",
     "node-sass": "^5.0.0",
+    "postcss": "^8.2.8",
     "postcss-preset-env": "^6.7.0",
     "rollup": "^2.39.1",
     "rollup-plugin-license": "^2.2.0",
