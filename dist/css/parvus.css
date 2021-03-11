@@ -34,7 +34,11 @@
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
-    cursor: pointer; }
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.15s linear; }
+    .parvus-zoom__indicator:hover {
+      opacity: 1; }
     .parvus-zoom__indicator svg {
       fill: none;
       height: 1.5rem;

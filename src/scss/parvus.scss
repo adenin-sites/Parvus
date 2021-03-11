@@ -41,6 +41,12 @@
     right: 0.5rem;
     top: 0.5rem;
     cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.15s linear;
+
+    &:hover {
+      opacity: 1;
+    }
 
     & svg {
       fill: none;
