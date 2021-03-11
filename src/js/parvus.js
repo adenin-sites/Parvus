@@ -109,12 +109,13 @@ export default function Parvus (userOptions) {
     if (!el.classList.contains('parvus-zoom')) {
       el.classList.add('parvus-zoom')
 
-      //const lightboxIndicatorIcon = document.createElement('div')
+      const lightboxIndicatorIcon = document.createElement('div')
 
-      //lightboxIndicatorIcon.className = 'parvus-zoom__indicator'
-      //lightboxIndicatorIcon.innerHTML = config.lightboxIndicatorIcon
+      lightboxIndicatorIcon.className = 'parvus-zoom__indicator'
+      lightboxIndicatorIcon.innerHTML = config.lightboxIndicatorIcon
+      lightboxIndicatorIcon.addEventListener('click', triggerParvus)
 
-      //el.parentNode.appendChild(lightboxIndicatorIcon)
+      el.parentNode.appendChild(lightboxIndicatorIcon)
 
       // Bind click event handler
       el.addEventListener('click', triggerParvus)
@@ -186,7 +187,7 @@ export default function Parvus (userOptions) {
    */
   const open = function open (el) {
     if (isOpen()) {
-      throw new Error('Ups, I\'m aleady open.')
+      throw new Error('Parvus is aleady open.')
     }
 
     // Save user’s focus
@@ -295,7 +296,13 @@ export default function Parvus (userOptions) {
    * @param {number} index - Index to load
    */
   const load = function load (el) {
-    if ((el.href && !el.href.match(/\.(png|jpe?g|gif|bmp|webp|svg)(\?.*)?$/i)) || !el.src.match(/\.(png|jpe?g|gif|bmp|webp|svg)(\?.*)?$/i)) {
+    // check if trigger was zoom indicator or img tag
+    if (el.classList.contains('parvus-zoom__indicator')) {
+      //if zoom indicator, set el to img tag
+      el = el.parentNode.querySelectorAll('img.parvus-zoom')[0]
+    }
+
+    if ((el.href && !el.href.match(/\.(png|jpe?g|gif|bmp|webp|svg)(\?.*)?$/i)) || !el.getAttribute('data-lightbox').match(/\.(png|jpe?g|gif|bmp|webp|svg)(\?.*)?$/i)) {
       return
     }
 
@@ -314,7 +321,7 @@ export default function Parvus (userOptions) {
     const THUMBNAIL_SIZE = el.getBoundingClientRect()
 
     lightboxImage.alt = THUMBNAIL.alt || ''
-    lightboxImage.src = el.href ? el.href : el.src
+    lightboxImage.src = el.href ? el.href : el.getAttribute('data-lightbox')
     lightboxImageContainer.style.opacity = '0'
 
     lightboxImage.style.opacity = '0'

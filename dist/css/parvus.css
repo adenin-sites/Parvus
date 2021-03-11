@@ -20,7 +20,7 @@
 .parvus-zoom {
   display: block;
   position: relative;
-  cursor: zoom-in; }
+  cursor: pointer; }
   .parvus-zoom__indicator {
     align-items: center;
     background-color: hsl(228, 24%, 23%);
@@ -33,7 +33,8 @@
     padding: 0.5rem;
     position: absolute;
     right: 0.5rem;
-    top: 0.5rem; }
+    top: 0.5rem;
+    cursor: pointer; }
     .parvus-zoom__indicator svg {
       fill: none;
       height: 1.5rem;

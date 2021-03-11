@@ -27,7 +27,7 @@
 .parvus-zoom {
   display: block;
   position: relative;
-  cursor: zoom-in;
+  cursor: pointer;
 
   &__indicator {
     align-items: center;
@@ -40,7 +40,7 @@
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
-
+    cursor: pointer;
 
     & svg {
       fill: none;
