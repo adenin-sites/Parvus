@@ -317,7 +317,9 @@ function Parvus(userOptions) {
         });
       });
       lightboxOverlay.addEventListener('transitionend', () => {
-        lightbox.classList.remove('parvus--is-opening');
+        lightbox.classList.remove('parvus--is-opening'); // overwrite original image src to use lightbox size image
+
+        el.setAttribute('src', el.href ? el.href : el.getAttribute('data-lightbox'));
       }, {
         once: true
       });

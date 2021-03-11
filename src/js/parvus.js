@@ -326,7 +326,7 @@ export default function Parvus (userOptions) {
 
     lightboxImage.style.opacity = '0'
 
-    lightboxImageContainer.appendChild(lightboxImage)
+    lightboxImageContainer.appendChild(lightboxImage)   
 
     lightboxImage.onload = () => {
       lightbox.removeChild(loadingIndicator)
@@ -361,6 +361,9 @@ export default function Parvus (userOptions) {
 
       lightboxOverlay.addEventListener('transitionend', () => {
         lightbox.classList.remove('parvus--is-opening')
+
+        // overwrite original image src to use lightbox size image
+        el.setAttribute('src', el.href ? el.href : el.getAttribute('data-lightbox'))
       },
       {
         once: true
